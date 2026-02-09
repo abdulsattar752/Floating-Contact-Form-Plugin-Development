@@ -1,0 +1,152 @@
+/* Floating Button */
+#faic-float-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: #d10000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999999;
+  font-size: 26px;
+  transition: transform 0.2s ease;
+}
+#faic-float-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Green online dot */
+#faic-online-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  background: #00ff00;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* Form Widget */
+#faic-widget {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 340px;
+  max-width: 90%;
+  background: #111;
+  color: #fff;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+  z-index: 999999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+#faic-header {
+  background: #d10000;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.2);
+}
+
+/* Messages */
+#faic-messages {
+  min-height: 20px;
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Inputs & Textarea & Select */
+#faic-widget input,
+#faic-widget select,
+#faic-widget textarea {
+  margin: 8px 0;
+  padding: 10px;
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+#faic-widget input:focus,
+#faic-widget select:focus,
+#faic-widget textarea:focus {
+  border-color: #d10000;
+  background: #1a1a1a;
+  outline: none;
+}
+
+/* Phone number only */
+#faic-phone {
+  -moz-appearance: textfield;
+}
+#faic-phone::-webkit-outer-spin-button,
+#faic-phone::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Textarea */
+#faic-widget textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* Submit Button */
+#faic-widget button {
+  background: #d10000;
+  border: none;
+  padding: 12px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+#faic-widget button:hover {
+  background: #b00000;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  #faic-widget {
+    width: 300px;
+    bottom: 80px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #faic-widget {
+    width: 280px;
+    bottom: 70px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #faic-widget {
+    width: 90%;
+    bottom: 70px;
+    right: 5%;
+  }
+}
