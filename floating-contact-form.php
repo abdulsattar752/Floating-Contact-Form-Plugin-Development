@@ -1,58 +1,39 @@
 <?php
 /*
 Plugin Name: Floating Contact Form
-Description: Floating Contact Form is a lightweight and production-ready WordPress plugin that allows you to add a floating contact button on any page.
-
-Features:
-
-Floating button always visible on bottom-right corner and Green online dot indicator 
-AJAX form submission without page reload and Live validation of required fields
-Instant email notifications to admin
-Lightweight and compatible with all WordPress themes
-Version: 1.1
+Description: Lightweight floating contact form with admin-controlled colors, text, and online dot.
+Version: 1.2
 Author: Abdul Sattar
 */
 
 if (!defined('ABSPATH')) exit;
 
-/* Enqueue CSS & JS */
+// Load admin settings
+if (is_admin()) {
+  require_once plugin_dir_path(__FILE__) . 'admin/admin-settings.php';
+}
+
+// Enqueue front-end CSS & JS
 add_action('wp_enqueue_scripts', function () {
-
-  wp_enqueue_style(
-    'faic-css',
-    plugin_dir_url(__FILE__) . 'chat.css'
-  );
-
-  wp_enqueue_script(
-    'faic-js',
-    plugin_dir_url(__FILE__) . 'chat.js',
-    [],
-    time(),
-    true
-  );
-
-  if (is_admin()) {
-    require_once plugin_dir_path(__FILE__) . 'admin/admin-settings.php';
-  }
-
+  wp_enqueue_style('faic-css', plugin_dir_url(__FILE__) . 'chat.css');
+  wp_enqueue_script('faic-js', plugin_dir_url(__FILE__) . 'chat.js', [], time(), true);
 
   wp_localize_script('faic-js', 'faic_ajax', [
     'ajax_url' => admin_url('admin-ajax.php')
   ]);
 });
 
-/* Load HTML in footer */
+// Load HTML in footer
 add_action('wp_footer', function () {
   include plugin_dir_path(__FILE__) . 'chat.php';
 });
 
-/* AJAX handlers */
+// AJAX form submission
 add_action('wp_ajax_faic_submit_form', 'faic_submit_form');
 add_action('wp_ajax_nopriv_faic_submit_form', 'faic_submit_form');
 
 function faic_submit_form()
 {
-
   $name    = sanitize_text_field($_POST['name'] ?? '');
   $email   = sanitize_email($_POST['email'] ?? '');
   $phone   = sanitize_text_field($_POST['phone'] ?? '');
@@ -61,7 +42,6 @@ function faic_submit_form()
 
   if (!$name || !$email || !$phone || !$region || !$project) {
     wp_send_json_error('Please fill all fields.');
-    wp_die();
   }
 
   $to = get_option('admin_email');
@@ -74,15 +54,11 @@ function faic_submit_form()
   } else {
     wp_send_json_error('Email failed. Check SMTP.');
   }
-
   wp_die();
 }
 
-
-// new code :
-
+// Dynamic front-end styles from admin settings
 add_action('wp_head', function () {
-
   $color = get_option('faic_theme_color', '#d10000');
   $dot   = get_option('faic_online_dot', 1);
 ?>
