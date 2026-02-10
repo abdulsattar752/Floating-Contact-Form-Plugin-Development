@@ -77,3 +77,33 @@ function faic_submit_form()
 
   wp_die();
 }
+
+
+// new code :
+
+add_action('wp_head', function () {
+
+  $color = get_option('faic_theme_color', '#d10000');
+  $dot   = get_option('faic_online_dot', 1);
+?>
+  <style>
+    #faic-float-btn,
+    #faic-header,
+    #faic-widget button {
+      background: <?php echo esc_attr($color); ?> !important;
+    }
+
+    #faic-widget input:focus,
+    #faic-widget textarea:focus,
+    #faic-widget select:focus {
+      border-color: <?php echo esc_attr($color); ?> !important;
+    }
+
+    <?php if (!$dot): ?>#faic-online-dot {
+      display: none !important;
+    }
+
+    <?php endif; ?>
+  </style>
+<?php
+});
