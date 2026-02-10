@@ -31,6 +31,11 @@ add_action('wp_enqueue_scripts', function () {
     true
   );
 
+  if (is_admin()) {
+    require_once plugin_dir_path(__FILE__) . 'admin/admin-settings.php';
+  }
+
+
   wp_localize_script('faic-js', 'faic_ajax', [
     'ajax_url' => admin_url('admin-ajax.php')
   ]);
