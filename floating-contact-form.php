@@ -43,7 +43,7 @@ add_action('wp_enqueue_scripts', function () {
 
 /* Load HTML in footer */
 add_action('wp_footer', function () {
-  include plugin_dir_path(__FILE__) . 'chat.html';
+  include plugin_dir_path(__FILE__) . 'chat.php';
 });
 
 /* AJAX handlers */
