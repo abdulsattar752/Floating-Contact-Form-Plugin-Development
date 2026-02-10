@@ -1,14 +1,12 @@
-<div id="faic-header">
-  <?php echo esc_html(get_option('faic_header_text', 'Get In Touch')); ?>
-</div>
-
 <div id="faic-float-btn" onclick="faic_toggle()">
   💬
   <span id="faic-online-dot"></span>
 </div>
 
 <div id="faic-widget">
-  <div id="faic-header">Get In Touch</div>
+  <div id="faic-header">
+    <?php echo esc_html(get_option('faic_header_text', 'Get In Touch')); ?>
+  </div>
 
   <div id="faic-messages"></div>
 
@@ -28,9 +26,7 @@
 
   <textarea id="faic-input" name="project" placeholder="Project Details"></textarea>
 
-  <button type="button" onclick="faic_send()">Submit</button>
+  <button type="button" onclick="faic_send()">
+    <?php echo esc_html(get_option('faic_submit_text', 'Submit')); ?>
+  </button>
 </div>
-
-<button type="button" onclick="faic_send()">
-  <?php echo esc_html(get_option('faic_submit_text', 'Submit')); ?>
-</button>
