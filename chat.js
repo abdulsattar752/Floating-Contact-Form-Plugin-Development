@@ -21,11 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectEl = document.getElementById('faic-input');
     const msg = document.getElementById('faic-messages');
 
-    if (!nameEl || !emailEl || !phoneEl || !regionEl || !projectEl) {
-      console.error('Elements missing');
-      return;
-    }
-
     if (!nameEl.value || !emailEl.value || !phoneEl.value || !regionEl.value || !projectEl.value) {
       msg.style.color = 'red';
       msg.innerText = 'Please fill all fields.';
@@ -43,21 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
     data.append('region', regionEl.value);
     data.append('project', projectEl.value);
 
-    fetch(faic_ajax.ajax_url, {
-      method: 'POST',
-      body: data
-    })
+    fetch(faic_ajax.ajax_url, { method: 'POST', body: data })
       .then(r => r.json())
       .then(r => {
         if (r.success) {
           msg.style.color = 'green';
           msg.innerText = r.data;
-
-          nameEl.value = '';
-          emailEl.value = '';
-          phoneEl.value = '';
-          regionEl.value = '';
-          projectEl.value = '';
+          nameEl.value = emailEl.value = phoneEl.value = regionEl.value = projectEl.value = '';
         } else {
           msg.style.color = 'red';
           msg.innerText = r.data;
