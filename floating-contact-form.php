@@ -9,9 +9,6 @@ Floating button always visible on bottom-right corner and Green online dot indic
 AJAX form submission without page reload and Live validation of required fields
 Instant email notifications to admin
 Lightweight and compatible with all WordPress themes
-
-This plugin improves user engagement and ensures smooth communication with website visitors.
-It’s easy to install, fully tested, and ready for production use.
 Version: 1.1
 Author: Abdul Sattar
 */
