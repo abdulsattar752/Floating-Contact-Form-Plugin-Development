@@ -122,7 +122,7 @@
   transition: background 0.3s ease, transform 0.2s ease;
 }
 #faic-widget button:hover {
-  background: #b00000;
+  background: #a20404;
   transform: translateY(-2px);
 }
 
